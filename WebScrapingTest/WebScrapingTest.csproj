@@ -64,7 +64,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Word\WordServiceTest.cs" />
+    <Compile Include="WordServiceTests\WordServiceTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
