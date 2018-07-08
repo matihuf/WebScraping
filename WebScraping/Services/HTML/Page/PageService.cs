@@ -42,7 +42,7 @@ namespace WebScraping.Services.HTML.Page
             return page;
         }
 
-        public IEnumerable<string> GetPageUrls(int pageCount)
+        public IEnumerable<string> GetPageUrls(int pageCount, string pageWord, int startIndex = 1)
         {
             if (pageCount == 0)
             {
@@ -50,9 +50,9 @@ namespace WebScraping.Services.HTML.Page
             }
             else
             {
-                for (int i = 1; i <= pageCount; i++)
+                for (int i = startIndex; i <= pageCount; i++)
                 {
-                    yield return this.url + "?page=" + i;
+                    yield return this.url + pageWord + i;
                 }
             }
         }
