@@ -10,13 +10,13 @@ namespace WebScraping.Services.Http
     {
         private HttpClient httpClient;
 
-        public HttpService()
+        public HttpService(HttpClient httpClient)
         {
-            this.httpClient = new HttpClient();
-            InitClient();
+            this.httpClient = httpClient;
+            AddDefaultRequestHeaders();
         }
 
-        private void InitClient()
+        private void AddDefaultRequestHeaders()
         {
             this.httpClient.DefaultRequestHeaders.TryAddWithoutValidation("Accept", "text/html,application/xhtml+xml,application/xml");
             this.httpClient.DefaultRequestHeaders.TryAddWithoutValidation("Accept-Encoding", "gzip, deflate");
