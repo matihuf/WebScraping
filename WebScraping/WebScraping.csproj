@@ -5,7 +5,6 @@
     <AssemblyName>WebScraping</AssemblyName>
     <RootNamespace>WebScraping</RootNamespace>
     <Platforms>AnyCPU;x64</Platforms>
-    <RuntimeIdentifiers>win10-x64</RuntimeIdentifiers>
   </PropertyGroup>
 
   <ItemGroup>
