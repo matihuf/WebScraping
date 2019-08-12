@@ -1,6 +1,7 @@
 ﻿using HtmlAgilityPack;
 using WebScraping.Services.Http;
 using System.Threading.Tasks;
+using System.Linq;
 
 namespace WebScraping.Services.HTML
 {

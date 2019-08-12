@@ -1,5 +1,6 @@
 ﻿using HtmlAgilityPack;
 using System.Text;
+using System.Text.RegularExpressions;
 
 namespace WebScraping.Extensions
 {
@@ -20,6 +21,11 @@ namespace WebScraping.Extensions
             HtmlDocument htmlDoc = new HtmlDocument();
             htmlDoc.LoadHtml(s);
             return htmlDoc.DocumentNode.InnerText;
+        }
+
+        public static string RemoveRTN(this string s)
+        {
+            return Regex.Replace(s, @"\t|\n|\r", "");
         }
     }
 }
