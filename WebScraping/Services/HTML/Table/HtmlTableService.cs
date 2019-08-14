@@ -8,7 +8,7 @@ namespace WebScraping.Services.HTML.Table
     {
         public IEnumerable<HtmlNode> GetTrNodes(HtmlDocument htmlDocument, string xpath)
         {
-            if (htmlDocument != null && htmlDocument.DocumentNode != null)
+            if (htmlDocument != null && htmlDocument.DocumentNode != null && htmlDocument.DocumentNode.HasChildNodes)
             {
                 return htmlDocument.DocumentNode.SelectNodes(xpath).Elements("tr");
             }

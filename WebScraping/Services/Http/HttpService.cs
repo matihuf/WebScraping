@@ -3,16 +3,19 @@ using System.IO;
 using System.IO.Compression;
 using System.Net.Http;
 using System.Threading.Tasks;
+using WebScraping.Services.Url;
 
 namespace WebScraping.Services.Http
 {
     public class HttpService : IHttpService
     {
         private HttpClient httpClient;
+        private readonly IUrlChecker urlChecker;
 
-        public HttpService(HttpClient httpClient)
+        public HttpService(HttpClient httpClient, IUrlChecker urlChecker)
         {
             this.httpClient = httpClient;
+            this.urlChecker = urlChecker;
             AddDefaultRequestHeaders();
         }
 
@@ -26,15 +29,22 @@ namespace WebScraping.Services.Http
 
         public async Task<string> GetResponse(string url)
         {
-            var response = await this.httpClient.GetAsync(new Uri(url));
-
-            response.EnsureSuccessStatusCode();
-            using (var responseStream = await response.Content.ReadAsStreamAsync())
-            using (var decompressedStream = new GZipStream(responseStream, CompressionMode.Decompress))
-            using (var streamReader = new StreamReader(decompressedStream))
+            Tuple<bool, Uri> uriTuple = urlChecker.GetWithValid(url);
+            if (uriTuple.Item1)
             {
-                return await streamReader.ReadToEndAsync();
+                var response = await this.httpClient.GetAsync(uriTuple.Item2);
+
+                if (response.IsSuccessStatusCode)
+                {
+                    using (var responseStream = await response.Content.ReadAsStreamAsync())
+                    using (var decompressedStream = new GZipStream(responseStream, CompressionMode.Decompress))
+                    using (var streamReader = new StreamReader(decompressedStream))
+                    {
+                        return await streamReader.ReadToEndAsync();
+                    }
+                }
             }
+            return string.Empty;
         }
     }
 }

@@ -19,8 +19,10 @@ namespace WebScraping.Services.HTML
             HtmlDocument htmlDocument = new HtmlDocument();
 
             string html = await httpService.GetResponse(url);
-            htmlDocument.LoadHtml(html);
-
+            if (!string.IsNullOrEmpty(html))
+            {
+                htmlDocument.LoadHtml(html);
+            }
             return htmlDocument;
         }
     }
