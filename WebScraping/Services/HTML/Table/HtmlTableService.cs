@@ -10,7 +10,11 @@ namespace WebScraping.Services.HTML.Table
         {
             if (htmlDocument != null && htmlDocument.DocumentNode != null && htmlDocument.DocumentNode.HasChildNodes)
             {
-                return htmlDocument.DocumentNode.SelectNodes(xpath).Elements("tr");
+                HtmlNodeCollection nodes = htmlDocument.DocumentNode.SelectNodes(xpath);
+                if (nodes != null)
+                {
+                    return nodes.Elements("tr");
+                }
             }
             return new List<HtmlNode>();
         }
