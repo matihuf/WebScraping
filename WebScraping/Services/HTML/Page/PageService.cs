@@ -7,11 +7,11 @@ namespace WebScraping.Services.HTML.Page
 {
     public class PageService : IPageService
     {
-        private IHTMLService htmlService;
+        private readonly IHtmlServie htmlService;
         private const int SKIP_NEXT_BUTTON_INDEX = 2;
         protected string url;
 
-        public PageService(IHTMLService htmlService, string url)
+        public PageService(IHtmlServie htmlService, string url)
         {
             this.htmlService = htmlService;
             this.url = url;
@@ -25,7 +25,7 @@ namespace WebScraping.Services.HTML.Page
             HtmlNodeCollection nodes = htmlDocument.DocumentNode.SelectNodes(xpath);
             if (nodes == null)
             {
-                throw new NullReferenceException("The XPath does not return results.");
+                throw new NodeNotFoundException("The XPath does not return results.");
             }
 
             HtmlNode last = nodes.Last();

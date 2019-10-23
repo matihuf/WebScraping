@@ -5,7 +5,7 @@ using WebScraping.Services.HTML;
 
 namespace WebScraping
 {
-    public interface IWebScrapingService : IHTMLService, IHTMLNodeService
+    public interface IWebScrapingService : IHtmlServie, IHtmlNodeService
     {
     }
 }

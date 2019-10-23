@@ -1,22 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using HtmlAgilityPack;
 using WebScraping.Services.HTML;
-using WebScraping.Services.Http;
 
 namespace WebScraping
 {
     public class WebScrapingService : IWebScrapingService
     {
-        private readonly IHTMLService hTMLService;
-        private readonly IHTMLNodeService hTMLNodeService;
+        private readonly IHtmlServie hTMLService;
+        private readonly IHtmlNodeService hTMLNodeService;
 
-        public WebScrapingService(IHttpService httpService)
+        public WebScrapingService(IHtmlServie hTMLService, IHtmlNodeService hTMLNodeService)
         {
-            hTMLService = new HTMLService(httpService);
-            hTMLNodeService = new HTMLNodeService();
+            this.hTMLService = hTMLService;
+            this.hTMLNodeService = hTMLNodeService;
         }
 
         public async Task<HtmlDocument> GetHtmlDocument(string url)

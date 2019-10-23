@@ -1,12 +1,9 @@
 ﻿using HtmlAgilityPack;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace WebScraping.Services.HTML
 {
-    public class HTMLNodeService : IHTMLNodeService
+    public class HtmlNodeService : IHtmlNodeService
     {
         public string GetInnerText(HtmlDocument htmlDocument, string xpath)
         {

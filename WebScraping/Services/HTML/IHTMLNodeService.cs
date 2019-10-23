@@ -5,7 +5,7 @@ using System.Text;
 
 namespace WebScraping.Services.HTML
 {
-    public interface IHTMLNodeService
+    public interface IHtmlNodeService
     {
         string GetInnerText(HtmlDocument htmlDocument, string xpath);
     }

@@ -1,15 +1,14 @@
 ﻿using HtmlAgilityPack;
 using WebScraping.Services.Http;
 using System.Threading.Tasks;
-using System.Linq;
 
 namespace WebScraping.Services.HTML
 {
-    public class HTMLService : IHTMLService
+    public class HtmlService : IHtmlServie
     {
-        private IHttpService httpService;
+        private readonly IHttpService httpService;
 
-        public HTMLService(IHttpService httpService)
+        public HtmlService(IHttpService httpService)
         {
             this.httpService = httpService;
         }

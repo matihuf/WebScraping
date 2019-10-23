@@ -9,7 +9,7 @@ namespace WebScraping.Services.Http
 {
     public class HttpService : IHttpService
     {
-        private HttpClient httpClient;
+        private readonly HttpClient httpClient;
         private readonly IUrlChecker urlChecker;
 
         public HttpService(HttpClient httpClient, IUrlChecker urlChecker)
