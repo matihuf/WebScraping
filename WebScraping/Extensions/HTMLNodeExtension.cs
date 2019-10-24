@@ -3,7 +3,7 @@ using System;
 
 namespace WebScraping.Extensions
 {
-    public static class HTMLNodeExtension
+    public static class HtmlNodeExtension
     {
         public static string GetStringValue(this HtmlNode htmlNode, string xpath)
         {
@@ -29,9 +29,7 @@ namespace WebScraping.Extensions
             }
 
             HtmlNode node = htmlNode.SelectSingleNode(xpath);
-
-            DateTime dateTime;
-            if (node != null && DateTime.TryParse(node.InnerText, out dateTime))
+            if (node != null && DateTime.TryParse(node.InnerText, out DateTime dateTime))
             {
                 return dateTime;
             }
