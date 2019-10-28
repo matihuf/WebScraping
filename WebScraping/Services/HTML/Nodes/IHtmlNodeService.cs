@@ -1,9 +1,6 @@
 ﻿using HtmlAgilityPack;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
-namespace WebScraping.Services.HTML
+namespace WebScraping.Services.HTML.Nodes
 {
     public interface IHtmlNodeService
     {

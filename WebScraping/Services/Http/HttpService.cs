@@ -29,10 +29,9 @@ namespace WebScraping.Services.Http
 
         public async Task<string> GetResponse(string url)
         {
-            Tuple<bool, Uri> uriTuple = urlChecker.GetWithValid(url);
-            if (uriTuple.Item1)
+            if (urlChecker.IsValid(url))
             {
-                var response = await this.httpClient.GetAsync(uriTuple.Item2);
+                var response = await this.httpClient.GetAsync(urlChecker.AbsoluteUri);
 
                 if (response.IsSuccessStatusCode)
                 {

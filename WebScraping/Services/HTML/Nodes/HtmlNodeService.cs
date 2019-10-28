@@ -1,7 +1,7 @@
 ﻿using HtmlAgilityPack;
 using System.Linq;
 
-namespace WebScraping.Services.HTML
+namespace WebScraping.Services.HTML.Nodes
 {
     public class HtmlNodeService : IHtmlNodeService
     {

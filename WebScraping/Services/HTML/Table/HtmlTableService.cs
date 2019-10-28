@@ -6,11 +6,11 @@ namespace WebScraping.Services.HTML.Table
 {
     public class HtmlTableService : IHtmlTableService
     {
-        public IEnumerable<HtmlNode> GetTrNodes(HtmlDocument htmlDocument, string xpath)
+        public IEnumerable<HtmlNode> GetTrNodes(HtmlDocument htmlDocument, string tableXpath)
         {
             if (htmlDocument != null && htmlDocument.DocumentNode != null && htmlDocument.DocumentNode.HasChildNodes)
             {
-                HtmlNodeCollection nodes = htmlDocument.DocumentNode.SelectNodes(xpath);
+                HtmlNodeCollection nodes = htmlDocument.DocumentNode.SelectNodes(tableXpath);
                 if (nodes != null)
                 {
                     return nodes.Elements("tr");
